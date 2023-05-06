@@ -15,4 +15,5 @@ public class AppConfig {
 	public AuditorAware<Long> auditorAware() {
 		return new AuditorAwareImpl();
 	}
+	
 }

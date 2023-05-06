@@ -1,5 +1,7 @@
 package com.sahu.um.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -13,7 +15,10 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @Entity
-public class Permission extends Auditable<Long> {
+public class Permission extends Auditable<Long> implements Serializable  {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private Long id;
 	
