@@ -25,13 +25,13 @@ public abstract class Auditable<User> {
 	protected User createdBy;
 	
 	@CreatedDate
-	@Temporal(TemporalType.TIMESTAMP)
+	//@Temporal(TemporalType.TIMESTAMP)
 	protected Date createdAt;
 	
 	@LastModifiedBy
 	protected User updatedBy;
 	
 	@LastModifiedDate
-	@Temporal(TemporalType.TIMESTAMP)
+	//@Temporal(TemporalType.TIMESTAMP)
 	protected Date updatedAt;
 }
