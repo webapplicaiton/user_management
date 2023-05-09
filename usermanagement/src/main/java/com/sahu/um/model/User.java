@@ -12,24 +12,35 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter
 @Getter
-@Entity
+@Setter
 @NoArgsConstructor
 @ToString
-public class Permission extends Auditable<Long> implements Serializable {
-	
+@Entity
+public class User extends Auditable<Long> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	private String name;
-	
-	private String description;
-	
+
+	private String uuid;
+
+	private String firstName;
+
+	private String middleName;
+
+	private String lastName;
+
+	private String email;
+
+	private Long phoneNo;
+
+	private String password;
+
+	private String status;
+
 	private boolean active;
-	
+
 }

@@ -20,16 +20,16 @@ import lombok.Setter;
 @EntityListeners(value = { AuditingEntityListener.class })
 //entity listeners helps to specify the call back listener, here the callback listener is 
 //AuditingEntityListener
-public abstract class Auditable<User> {
+public abstract class Auditable<U> {
 	
 	@CreatedBy
-	protected User createdBy;
+	protected U createdBy;
 	
 	@CreatedDate
 	protected Date createdAt;
 	
 	@LastModifiedBy
-	protected User updatedBy;
+	protected U updatedBy;
 	
 	@LastModifiedDate
 	protected Date updatedAt;
