@@ -11,5 +11,10 @@ public class MainController {
 	@GetMapping("/")
 	public String showHome() {
 		return LVNConstants.INDEX_PAGE;
-	} 
+	}
+	
+	@GetMapping("/login")
+	public String showLoginPage() {
+		return LVNConstants.LOGIN_PAGE;
+	}
 }

@@ -2,9 +2,81 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Home Page</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/global/bootstrap.min.css}"/>
+
+<script type="text/javascript"  th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
+<script type="text/javascript"  th:src="@{/js/global/bootstrap.min.js}"></script>
+
 </head>
 <body>
-Home Page
+<nav class="navbar my-navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="https://imgur.com/sbUlQpy" alt="" />
+          LOGO</a
+        >
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span
+            class="iconify bar-icon"
+            data-icon="fa-solid:bars"
+            data-inline="false"
+          ></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item nav-active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="jumbotron bg-white">
+      <div class="container">
+        <div class="row mt-5 justify-content-between">
+          <div class="col-md-5">
+            <h1 style="margin-top: 60px;" class="mb-3 font-weight-bold">
+              Have fun with Bootstrap 4
+            </h1>
+            <p class="mb-4">
+              Lorem ipsum dolor sit, amet consectetur <br />
+              adipisicing elit. Unde mollitia provident,
+            </p>
+            <a  th:href ="@{/login}" class="btn btn-warning font-weight-bold">
+              Get Started
+            </a>
+          </div>
+          <div class="col-md-6">
+            <img
+              src="https://images.unsplash.com/photo-1517732306149-e8f829eb588a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=752&q=80"
+              alt=""
+              class="img-fluid"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
