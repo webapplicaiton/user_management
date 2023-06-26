@@ -1,14 +1,14 @@
 package com.sahu.um.config;
 
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.sahu.um.audit.AuditAwareImp;
 
-@Configurable
+@Configuration
 @EnableJpaAuditing
 public class AppConfig {
 

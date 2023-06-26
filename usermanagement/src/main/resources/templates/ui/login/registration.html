@@ -27,7 +27,7 @@
             </div>
             
             <div class="col-xl-6">
-            <form action="" method="post">
+            <form  th:action="@{/register}" method="post" th:object="${user}">
               <div class="card-body p-md-5 text-black">
                 <h3 class="mb-5 text-uppercase">User registration form</h3>
 			  
@@ -35,14 +35,14 @@
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
                     <label class="form-label" for="form3Example1m">First name</label>
-                      <input type="text" id="form3Example1m" class="form-control form-control-lg" />
+                      <input type="text" th:field="*{firstName}" id="form3Example1m" class="form-control form-control-lg" />
                       
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
                     <label class="form-label" for="form3Example1n">Last name</label>
-                      <input type="text" id="form3Example1n" class="form-control form-control-lg" />
+                      <input type="text" th:field="*{lastName}" id="form3Example1n" class="form-control form-control-lg" />
                       
                     </div>
                   </div>
@@ -50,19 +50,19 @@
                 
                 <div class="form-outline mb-4">
                 <label class="form-label" for="form3Example97">Email ID</label>
-                  <input type="text" id="form3Example97" class="form-control form-control-lg" />
+                  <input type="text" th:field="*{email}" id="form3Example97" class="form-control form-control-lg" />
                   
                 </div>
                 
                 <div class="form-outline mb-4">
                 <label class="form-label" for="form3Example97">Password</label>
-                  <input type="password" id="form3Example97" class="form-control form-control-lg" />
+                  <input type="password" th:field="*{password}" id="form3Example97" class="form-control form-control-lg" />
                   
                 </div>
 
                 <div class="d-flex justify-content-end pt-3">
-                  <button type="button" class="btn btn-light btn-lg">Reset all</button>
-                  <button type="button" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                  <button type="reset" class="btn btn-light btn-lg">Reset all</button>
+                  <button type="submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
                 </div>
 
               </div>

@@ -22,12 +22,14 @@ public class MainController {
 	}
 	
 	@GetMapping("/register")
-	public String showRegistrationPage() {
+	public String showRegistrationPage(@ModelAttribute("user") User user) {
+		System.out.println("MainController.showRegistrationPage()");
 		return LVNConstants.REGISTRATION_PAGE;
 	}
 	
 	@PostMapping("/register")
 	public String registerUser(@ModelAttribute("user") User user) {
+		System.out.println("MainController.registerUser()");
 		return LVNConstants.LOGIN_PAGE;
 	}
 }
