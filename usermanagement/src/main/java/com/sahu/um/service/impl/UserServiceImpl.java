@@ -1,5 +1,6 @@
 package com.sahu.um.service.impl;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class UserServiceImpl implements UserService {
 		user.setActive(true);
 		user.setStatus("active");
 		return userRepo.save(user).getId();
+	}
+
+	@Override
+	public Optional<User> findByEmail(String email) {
+		return userRepo.findByEmail(email);
 	}
 
 }
