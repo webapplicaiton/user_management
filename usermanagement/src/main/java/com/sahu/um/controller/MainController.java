@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sahu.um.constants.LVNConstants;
 import com.sahu.um.model.User;
@@ -35,13 +36,17 @@ public class MainController {
 	}
 	
 	@PostMapping("/register")
-	public String registerUser(@ModelAttribute("user") User user) {
+	public String registerUser(@ModelAttribute("user") User user, RedirectAttributes redirectAttribute) {
 		System.out.println("MainController.registerUser()");
 		Optional<User> isUserExist = userservice.findByEmail(user.getEmail());
-		if(isUserExist.isPresent())
-			System.out.println("User already exist");
-		else
+		if(isUserExist.isPresent()) {
+			redirectAttribute.addFlashAttribute("RegistrationError", "User already Exists");
+		    return "redirect:/register";
+		}
+		else {
 			userservice.registerUser(user);
-		return LVNConstants.LOGIN_PAGE;
+			redirectAttribute.addFlashAttribute("RegistrationSuccess", "User sucessfully registered");
+			return "redirect:/login";
+		}
 	}
 }

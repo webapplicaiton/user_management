@@ -6,7 +6,8 @@
 
 <link rel="stylesheet" type="text/css"
 	th:href="@{/css/global/bootstrap.min.css}" />
-<link rel="stylesheet" type="text/css" th:href="@{/css/login/registration.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/login/registration.css}" />
 
 <script type="text/javascript"
 	th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
@@ -14,65 +15,82 @@
 
 </head>
 <body>
-<section class="h-100 bg-dark">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col">
-        <div class="card card-registration my-4">
-          <div class="row g-0">
-            <div class="col-xl-6 d-none d-xl-block">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
-                alt="Sample photo" class="img-fluid"
-                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
-            </div>
-            
-            <div class="col-xl-6">
-            <form  th:action="@{/register}" method="post" th:object="${user}">
-              <div class="card-body p-md-5 text-black">
-                <h3 class="mb-5 text-uppercase">User registration form</h3>
-			  
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                    <label class="form-label" for="form3Example1m">First name</label>
-                      <input type="text" th:field="*{firstName}" id="form3Example1m" class="form-control form-control-lg" />
-                      
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                    <label class="form-label" for="form3Example1n">Last name</label>
-                      <input type="text" th:field="*{lastName}" id="form3Example1n" class="form-control form-control-lg" />
-                      
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="form-outline mb-4">
-                <label class="form-label" for="form3Example97">Email ID</label>
-                  <input type="text" th:field="*{email}" id="form3Example97" class="form-control form-control-lg" />
-                  
-                </div>
-                
-                <div class="form-outline mb-4">
-                <label class="form-label" for="form3Example97">Password</label>
-                  <input type="password" th:field="*{password}" id="form3Example97" class="form-control form-control-lg" />
-                  
-                </div>
+	<section class="h-100 bg-dark">
+		<div class="container py-5 h-100">
+			<div
+				class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col">
+					<div class="card card-registration my-4">
+						<div class="row g-0">
+							<div class="col-xl-6 d-none d-xl-block">
+								<img
+									src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+									alt="Sample photo" class="img-fluid"
+									style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+							</div>
+							<div class="col-xl-6">
+								<form th:action="@{/register}" method="post" th:object="${user}">
+									<div class="card-body p-md-5 text-black">
+										<h3 class="mb-5 text-uppercase">User registration form</h3>
+										<div class="row">
+											<div th:if="${RegistrationError} !=null"
+												class="alert alert-danger alert-dismissible fade show col-md-12"
+												role="alert">
+												<strong th:text="${RegistrationError}"></strong>
+												<button type="button" class="close" data-dismiss="alert"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6 mb-4">
+												<div class="form-outline">
+													<label class="form-label" for="form3Example1m">First
+														name</label> <input type="text" th:field="*{firstName}"
+														id="form3Example1m" class="form-control form-control-lg" />
+												</div>
 
-                <div class="d-flex justify-content-end pt-3">
-                  <button type="reset" class="btn btn-light btn-lg">Reset all</button>
-                  <button type="submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
-                </div>
+											</div>
+											<div class="col-md-6 mb-4">
+												<div class="form-outline">
+													<label class="form-label" for="form3Example1n">Last
+														name</label> <input type="text" th:field="*{lastName}"
+														id="form3Example1n" class="form-control form-control-lg" />
 
-              </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-outline mb-4">
+											<label class="form-label" for="form3Example97">Email
+												ID</label> <input type="text" th:field="*{email}"
+												id="form3Example97" class="form-control form-control-lg" />
+
+										</div>
+
+										<div class="form-outline mb-4">
+											<label class="form-label" for="form3Example97">Password</label>
+											<input type="password" th:field="*{password}"
+												id="form3Example97" class="form-control form-control-lg" />
+
+										</div>
+
+										<div class="d-flex justify-content-end pt-3">
+											<button type="reset" class="btn btn-light btn-lg">Reset
+												all</button>
+											<button type="submit" class="btn btn-warning btn-lg ms-2">Submit
+												form</button>
+										</div>
+
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 </html>
