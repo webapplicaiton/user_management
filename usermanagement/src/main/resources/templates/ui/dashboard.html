@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>dashboard</title>
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/global/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/global/header.css}" />
+
+
+<script type="text/javascript"
+	th:src="@{/js/global/jquery-3.6.0.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/global/bootstrap.min.js}"></script>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg" th:fragment="menu">
+		<img alt="header logo" class="header_logo_img"
+			th:src="@{/images/logo/user-logo.png}"></img>
+
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav justify-content-end" style='flex: auto;'>
+				<li class="nav-item active">
+					<a class="nav-link" th:href="@{/client/user/dashboard}">Dashboard</a>
+				</li>
+				
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/client/user/action2}">Action 2</a>
+				</li>
+				
+				<li class="nav-item dropdown">
+       				<a class="nav-link dropdown-toggle" href="#" role="button" 
+       					data-toggle="dropdown" aria-expanded="false">
+         				[[${@environment.getProperty('administration_a')} ? ${@environment.getProperty('administration_a')} : 'Administration']]
+       				</a>
+       				<ul class="dropdown-menu">
+         				<li>
+         					<a class="dropdown-item" th:href="@{/client/user/list}">
+         						[[${@environment.getProperty('users_a')} ? ${@environment.getProperty('users_a')} : 'Users']]
+         					</a>
+         				</li>
+         				<li>
+         					<a class="dropdown-item" th:href="@{/client/role/list}">
+         						[[${@environment.getProperty('roles_a')} ? ${@environment.getProperty('roles_a')} : 'Roles']]
+         					</a>
+         				</li>
+       				</ul>
+     			</li>
+				
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button"
+						data-toggle="dropdown" aria-expanded="false"> 
+						<i class="fa fa-user-circle-o user_profile_i"></i>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-end">
+						<li>
+							<a class="dropdown-item" th:href="@{/client/user/edit-profile}">
+								<i class="fa fa-user user_menu_i"></i> 
+								[[${@environment.getProperty('profile_a')} ? ${@environment.getProperty('profile_a')} : 'Profile']]
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">
+								<i class="fa fa-cogs user_menu_i"></i> 
+								[[${@environment.getProperty('settings_a')} ? ${@environment.getProperty('settings_a')} : 'Settings']]
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" th:href="@{/logout}">
+								<i class="fa fa-sign-out user_menu_i"></i> 
+								[[${@environment.getProperty('logout_a')} ? ${@environment.getProperty('logout_a')} : 'Logout']]
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+	</nav>
+</body>
+</html>

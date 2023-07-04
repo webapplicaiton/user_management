@@ -9,7 +9,7 @@ public class UserDetailServiceImpl implements UserDetailsService  {
 
 	@Override
 	public CustomUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
+		System.out.println("UserDetailServiceImpl.loadUserByUsername()");
 		return null;
 	}
 }
