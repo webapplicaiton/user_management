@@ -1,17 +1,18 @@
 package com.sahu.um.config;
 
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configurable
+@Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-	//it won't ask for permission to load the mentioned folder and files
+	// it won't ask for permission to load the mentioned folder and files
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
 		return (web) -> web.ignoring().antMatchers("/css/**", "/js/**", "/images/**", "/lib/**");
@@ -19,7 +20,17 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests().antMatchers("/","/login","/register").permitAll().anyRequest().authenticated();
+		http.authorizeHttpRequests(request -> request.antMatchers("/", "/login", "/registration", "/forgetpassword")
+				.permitAll().anyRequest().authenticated()).csrf().disable()
+				.formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login").failureUrl("/login?error")
+						.usernameParameter("username").passwordParameter("password")
+						.defaultSuccessUrl("/client/user/dashboard", true))
+				.logout(logout -> logout.logoutUrl("/logout").invalidateHttpSession(true).deleteCookies("JSESSIONID")
+						.logoutSuccessUrl("/login?logout"))
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+						.invalidSessionUrl("/invalidsession").maximumSessions(1).maxSessionsPreventsLogin(false)
+						.expiredUrl("/login?session-expire"))
+				.exceptionHandling().accessDeniedPage("/accessdenied");
 		return http.build();
 	}
 }
