@@ -49,4 +49,9 @@ public class MainController {
 			return "redirect:/login";
 		}
 	}
+	@GetMapping("/dashboard")
+	public String showDashboard() {
+		return null;
+	}
+	
 }

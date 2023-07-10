@@ -24,7 +24,7 @@ public class SecurityConfig {
 				.permitAll().anyRequest().authenticated()).csrf().disable()
 				.formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login").failureUrl("/login?error")
 						.usernameParameter("username").passwordParameter("password")
-						.defaultSuccessUrl("/client/user/dashboard", true))
+						.defaultSuccessUrl("/dashboard", true))
 				.logout(logout -> logout.logoutUrl("/logout").invalidateHttpSession(true).deleteCookies("JSESSIONID")
 						.logoutSuccessUrl("/login?logout"))
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
