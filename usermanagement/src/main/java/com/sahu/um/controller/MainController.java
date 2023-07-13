@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sahu.um.constants.LVNConstants;
+import com.sahu.um.model.CustomUserDetails;
 import com.sahu.um.model.User;
 import com.sahu.um.service.UserService;
+import com.sahu.um.util.security.SecurityUtil;
 
 @Controller
 public class MainController {
@@ -51,7 +53,9 @@ public class MainController {
 	}
 	@GetMapping("/dashboard")
 	public String showDashboard() {
-		return null;
+		CustomUserDetails customUserDetails = SecurityUtil.getCurrentUser();
+		System.out.println(customUserDetails.getUsername());
+		return LVNConstants.DASHBOARD_PAGE;
 	}
 	
 }
