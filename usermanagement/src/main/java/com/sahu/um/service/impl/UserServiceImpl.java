@@ -4,6 +4,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
+import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +35,17 @@ public class UserServiceImpl implements UserService {
 	public Optional<User> findByEmail(String email) {
 		return userRepo.findByEmail(email);
 	}
+
+	@Override
+	public DataTablesOutput<User> findAll(DataTablesInput input) {
+		return userRepo.findAll(input);
+	}
+
+	@Override
+	public DataTablesOutput<User> findAll(DataTablesInput input, Specification<User> additionalSpecification) {
+		return userRepo.findAll(input, additionalSpecification);
+	}
+	
+	
 
 }
